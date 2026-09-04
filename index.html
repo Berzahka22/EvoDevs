@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EvoDevs — Portfolio d'équipe de développeurs</title>
+    <meta name="description" content="EvoDevs — équipe de développeurs passionnés. Produits web rapides, élégants et performants." />
+
+    <!-- Thème avant peinture -->
+    <script src="./js/theme.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/tailwind.js"> </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css">
+ 
+  </head>
+<!-- =========================================
+     BARRE DE PROGRESSION SCROLL
+     ========================================= -->
+<div id="scroll-progress" class="fixed inset-x-0 top-20 z-40 h-[3px] bg-transparent">
+  <div id="scroll-progress-bar" class="h-full w-0 origin-left bg-gradient-to-r from-brand-600 via-brand-500 to-cyan-400 shadow-[0_0_12px_rgba(20,184,166,0.6)] transition-none"></div>
+</div>
+
+<!-- =========================================
+     NAVBAR MOBILE (BOTTOM NAV)
+     ========================================= -->
+<nav id="mobile-nav" class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200/70 bg-white/90 glass shadow-[0_-4px_24px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-transform duration-300 dark:border-white/10 dark:bg-night-950/90 dark:shadow-[0_-4px_24px_rgba(0,0,0,0.3)] lg:hidden" aria-label="Navigation mobile">
+  <div class="mx-auto flex max-w-md items-center justify-around px-2 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))]">
+
+    <a href="#accueil" data-nav-target="#accueil" class="mobile-nav-link group flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-2 text-slate-500 transition dark:text-slate-400">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 transition group-[.active]:text-brand-600 group-[.active]:dark:text-brand-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955a1.126 1.126 0 0 1 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+      <span class="text-[10px] font-semibold transition group-[.active]:text-brand-700 group-[.active]:dark:text-brand-300">Accueil</span>
+    </a>
+
+    <a href="#services" data-nav-target="#services" class="mobile-nav-link group flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-2 text-slate-500 transition dark:text-slate-400">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 transition group-[.active]:text-brand-600 group-[.active]:dark:text-brand-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l-3 4.5 3 4.5m10.5-9 3 4.5-3 4.5M14.25 3.75l-4.5 16.5" /></svg>
+      <span class="text-[10px] font-semibold transition group-[.active]:text-brand-700 group-[.active]:dark:text-brand-300">Services</span>
+    </a>
+<a href="#tarifs" data-nav-target="#tarifs" class="mobile-nav-link group flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-2 text-slate-500 transition dark:text-slate-400">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 transition group-[.active]:text-brand-600 group-[.active]:dark:text-brand-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a48.656 48.656 0 0 1 19.5 0m-19.5 0a1.125 1.125 0 0 0 1.116 1.25h17.268a1.125 1.125 0 0 0 1.116-1.25m-19.5 0V6.375c0-.621.504-1.125 1.125-1.125h3.026a2.25 2.25 0 0 1 1.935 1.098l.5.84a2.25 2.25 0 0 0 1.935 1.098H15.75a2.25 2.25 0 0 0 2.25-2.25V3.75m-19.5 0A2.25 2.25 0 0 1 3 1.5h18A2.25 2.25 0 0 1 23.25 3.75" /></svg>
+  <span class="text-[10px] font-semibold transition group-[.active]:text-brand-700 group-[.active]:dark:text-brand-300">Tarifs</span>
+</a>
+    <a href="#equipe" data-nav-target="#equipe" class="mobile-nav-link group flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-2 text-slate-500 transition dark:text-slate-400">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 transition group-[.active]:text-brand-600 group-[.active]:dark:text-brand-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.624.983 9.38 9.38 0 0 1-7.248 0 9.38 9.38 0 0 0 2.624-.983M12 5.25a3.75 3.75 0 1 1 0 7.5 3.75 3.75 0 0 1 0-7.5Zm8.25 13.872v-1.5a4.125 4.125 0 0 0-3.44-4.067m-4.81 5.567a9.772 9.772 0 0 1-1.625-.171M3.75 19.125v-1.5a4.125 4.125 0 0 1 3.44-4.067m5.81-3.187a3.75 3.75 0 1 0-5.81 0" /></svg>
+      <span class="text-[10px] font-semibold transition group-[.active]:text-brand-700 group-[.active]:dark:text-brand-300">Équipe</span>
+    </a>
+
+    <a href="#projets" data-nav-target="#projets" class="mobile-nav-link group flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-2 text-slate-500 transition dark:text-slate-400">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 transition group-[.active]:text-brand-600 group-[.active]:dark:text-brand-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg>
+      <span class="text-[10px] font-semibold transition group-[.active]:text-brand-700 group-[.active]:dark:text-brand-300">Projets</span>
+    </a>
+
+    <a href="#contact" data-nav-target="#contact" class="mobile-nav-link group flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-2 text-slate-500 transition dark:text-slate-400">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 transition group-[.active]:text-brand-600 group-[.active]:dark:text-brand-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+      <span class="text-[10px] font-semibold transition group-[.active]:text-brand-700 group-[.active]:dark:text-brand-300">Contact</span>
+    </a>
+
+  </div>
+</nav>
+  <body class="bg-paper font-sans text-ink antialiased transition-colors duration-300 dark:bg-night-950 dark:text-slate-200 overflow-hidden" id="body-tag">
+
+    <!-- =========================================
+         ÉCRAN D'INTRODUCTION (SPLASH SCREEN)
+         ========================================= -->
+    <div id="intro-screen">
+      <button class="btn-skip" id="skip-btn">Passer l'intro ▸</button>
+      
+      <div class="intro-stage" id="intro-stage">
+        <div class="intro-grid"></div>
+        <div class="intro-blob intro-blob-a"></div>
+        <div class="intro-blob intro-blob-b"></div>
+        <span class="intro-particle"></span><span class="intro-particle"></span><span class="intro-particle"></span>
+        <span class="intro-particle"></span><span class="intro-particle"></span><span class="intro-particle"></span>
+
+        <div class="intro-lockup">
+          <div class="intro-monogram">
+            <div class="intro-mono-glow"></div>
+            <svg viewBox="0 0 200 200" aria-label="Logo EvoDevs">
+              <circle id="intro-flash" cx="100" cy="100" r="70"/>
+              <g id="intro-ringGroup">
+                <path class="intro-arc intro-arc1" d="M 112.15 31.06 A 70 70 0 0 1 168.94 87.85"/>
+                <path class="intro-arc intro-arc2" d="M 168.94 112.15 A 70 70 0 0 1 112.15 168.94"/>
+                <path class="intro-arc intro-arc3" d="M 87.85 168.94 A 70 70 0 0 1 31.06 112.15"/>
+                <path class="intro-arc intro-arc4" d="M 31.06 87.85 A 70 70 0 0 1 87.85 31.06"/>
+                <circle class="intro-node intro-node1" cx="100" cy="30" r="7"/>
+                <circle class="intro-node intro-node2" cx="170" cy="100" r="7"/>
+                <circle class="intro-node intro-node3" cx="100" cy="170" r="7"/>
+                <circle class="intro-node intro-node4" cx="30" cy="100" r="7"/>
+              </g>
+              <circle id="intro-innerCircle" cx="100" cy="100" r="56"/>
+              <text id="intro-edText" x="100" y="122" text-anchor="middle">ED</text>
+            </svg>
+          </div>
+
+          <div class="intro-wordblock">
+            <div class="intro-wordmark" aria-label="EvoDevs">
+              <span class="intro-letter accent">&lt;</span><span class="intro-letter">E</span><span class="intro-letter">v</span><span class="intro-letter accent">o</span><span class="intro-letter">D</span><span class="intro-letter">e</span><span class="intro-letter">v</span><span class="intro-letter accent">s</span><span class="intro-letter">/</span><span class="intro-letter accent">&gt;</span>
+            </div>
+            <div class="intro-draw-line"><span class="intro-line-dot"></span></div>
+            <div class="intro-team-line"><span class="intro-team-square"></span>TEAM</div>
+            <div class="intro-tagline">&lt; DIGITAL EVOLUTION &gt;</div>
+            <div class="intro-shine"></div>
+          </div>
+        </div>
+
+        <div class="intro-pulse"></div>
+        <div class="intro-vignette"></div>
+
+        <div class="intro-cta-container">
+          <button class="btn-discover" id="discover-btn">Découvrir l'équipe</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- =========================================
+         SITE PRINCIPAL
+         ========================================= -->
+    <a href="#contenu" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white">Aller au contenu</a>
+
+    <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300">
+      <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a href="#accueil" class="flex items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+          <svg viewBox="0 0 72 72" class="h-11 w-11" aria-hidden="true">
+            <circle cx="36" cy="36" r="28" fill="none" stroke-width="4" class="stroke-brand-600 dark:stroke-brand-400" />
+            <circle cx="36" cy="36" r="23" fill="none" stroke-width="1.5" class="stroke-brand-600/40 dark:stroke-brand-400/40" />
+            <circle cx="36" cy="8" r="5" class="fill-brand-600 dark:fill-brand-400" />
+            <circle cx="36" cy="64" r="5" class="fill-brand-600 dark:fill-brand-400" />
+            <circle cx="8" cy="36" r="5" class="fill-brand-600 dark:fill-brand-400" />
+            <circle cx="64" cy="36" r="5" class="fill-brand-600 dark:fill-brand-400" />
+            <text x="36" y="46" text-anchor="middle" style="font-family: Inter, sans-serif; font-weight: 800; font-size: 27px" class="fill-ink dark:fill-white">ED</text>
+          </svg>
+          <span class="text-xl font-extrabold tracking-tight text-ink dark:text-white">
+            <span class="text-brand-600 dark:text-brand-400">&lt;</span>Ev<span class="text-brand-600 dark:text-brand-400">o</span>Dev<span class="text-brand-600 dark:text-brand-400">s</span>/<span class="text-brand-600 dark:text-brand-400">&gt;</span>
+          </span>
+        </a>
+
+        <nav class="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
+          
+        <a href="#services" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-600/10 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:text-slate-300 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Services</a>
+        <a href="#tarifs" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-600/10 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:text-slate-300 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Tarifs</a>
+        <a href="#equipe" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-600/10 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:text-slate-300 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Équipe</a>
+          <a href="#projets" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-600/10 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:text-slate-300 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Projets</a>
+          <a href="#temoignages" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-600/10 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:text-slate-300 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Témoignages</a>
+          <a href="#contact" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-600/10 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:text-slate-300 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle" type="button" aria-label="Basculer le thème" aria-pressed="false" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-brand-600/10 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-slate-200 dark:hover:bg-night-700">
+            <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773-1.591-1.591M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>
+            <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" /></svg>
+          </button>
+          <a href="#contact" class="hidden rounded-xl bg-brand-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:bg-brand-400 dark:text-night-950 dark:shadow-brand-400/20 dark:hover:bg-brand-300 sm:inline-flex">Démarrer un projet</a>
+          <button id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-brand-600/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-slate-200 lg:hidden">
+            <span class="sr-only">Ouvrir le menu</span>
+            <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+            <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden border-t border-slate-200/70 bg-paper/95 px-4 pb-6 pt-4 glass dark:border-white/10 dark:bg-night-950/95 lg:hidden">
+        <nav class="grid gap-2" aria-label="Navigation mobile">
+          <a href="#services" class="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-brand-600/10 hover:text-brand-700 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Services</a>
+         <a href="#tarifs" class="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-brand-600/10 hover:text-brand-700 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Tarifs</a>
+          <a href="#equipe" class="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-brand-600/10 hover:text-brand-700 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Équipe</a>
+          <a href="#projets" class="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-brand-600/10 hover:text-brand-700 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Projets</a>
+          <a href="#temoignages" class="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-brand-600/10 hover:text-brand-700 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Témoignages</a>
+          <a href="#contact" class="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-brand-600/10 hover:text-brand-700 dark:hover:bg-brand-400/10 dark:hover:text-brand-300">Contact</a>
+        </nav>
+        <div class="mt-4 border-t border-slate-200 pt-4 dark:border-white/10">
+          <a href="#contact" class="block rounded-xl bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-500 dark:bg-brand-400 dark:text-night-950">Démarrer un projet</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenu" class="pt-20">
+      <section id="accueil" class="relative overflow-hidden pb-24 pt-16 lg:pt-24">
+        <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl dark:bg-brand-500/15" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -right-24 top-72 h-80 w-80 rounded-full bg-cyan-400/20 blur-3xl dark:bg-cyan-400/10" aria-hidden="true"></div>
+        <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8">
+          <div data-reveal>
+            <div class="inline-flex items-center gap-2 rounded-full border border-brand-600/20 bg-white px-4 py-2 text-xs font-semibold text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-night-800 dark:text-brand-300">
+              <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-brand-500"></span></span>
+              Disponible pour de nouveaux projets
+            </div>
+            <h1 class="mt-8 text-4xl font-black tracking-tight text-ink dark:text-white sm:text-5xl xl:text-6xl">
+              Nous concevons des <span class="bg-gradient-to-r from-brand-600 to-cyan-500 bg-clip-text text-transparent dark:from-brand-300 dark:to-cyan-300">produits web</span> rapides, élégants et performants
+            </h1>
+            <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-400">
+              EvoDevs est une équipe de développeurs passionnés qui accompagne startups, agences et entreprises dans la création d'applications web, de sites vitrines, d'API et de plateformes sur mesure.
+            </p>
+            <div class="mt-10 flex flex-wrap items-center gap-4">
+              <a href="#projets" class="rounded-xl bg-brand-600 px-6 py-4 text-sm font-semibold text-white shadow-xl shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:bg-brand-400 dark:text-night-950 dark:hover:bg-brand-300">Voir nos projets</a>
+              <a href="#contact" class="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-brand-600/40 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-white dark:hover:border-brand-400/40 dark:hover:text-brand-300">Nous contacter</a>
+            </div>
+            <dl class="mt-14 grid max-w-xl grid-cols-2 gap-6 sm:grid-cols-4">
+              <div><dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Projets livrés</dt><dd class="mt-2 text-3xl font-extrabold text-ink dark:text-white"><span data-counter="40" data-suffix="+">0+</span></dd></div>
+              <div><dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Clients satisfaits</dt><dd class="mt-2 text-3xl font-extrabold text-ink dark:text-white"><span data-counter="25" data-suffix="+">0+</span></dd></div>
+              <div><dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Technologies</dt><dd class="mt-2 text-3xl font-extrabold text-ink dark:text-white"><span data-counter="15" data-suffix="+">0+</span></dd></div>
+              <div><dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Expérience</dt><dd class="mt-2 text-3xl font-extrabold text-ink dark:text-white"><span data-counter="6" data-suffix=" ans">0 ans</span></dd></div>
+            </dl>
+          </div>
+          <div class="relative mx-auto w-full max-w-xl" data-reveal data-reveal-delay="150">
+            <div class="absolute -inset-8 rounded-[2rem] bg-gradient-to-tr from-brand-500/25 via-cyan-400/15 to-brand-400/25 blur-3xl" aria-hidden="true"></div>
+            <div class="relative rounded-3xl border border-slate-200 bg-white p-2 shadow-2xl dark:border-white/10 dark:bg-night-800">
+              <div class="flex items-center gap-2 border-b border-slate-100 px-4 py-3 dark:border-white/5">
+                <span class="h-3 w-3 rounded-full bg-rose-400"></span><span class="h-3 w-3 rounded-full bg-amber-400"></span><span class="h-3 w-3 rounded-full bg-brand-500"></span>
+                <span class="ml-3 text-xs font-medium text-slate-500 dark:text-slate-400">EvoDevs-dashboard.JS</span>
+              </div>
+              <div class="space-y-4 p-4">
+               <div class="space-y-4 p-4">
+                <div
+                  class="rounded-2xl bg-slate-950 p-5 font-mono text-xs leading-6 text-slate-100"
+                >
+                  <p>
+                    <span class="text-fuchsia-400">const</span>
+                    <span class="text-cyan-300"> equipe</span>
+                    <span class="text-slate-400"> =</span> [
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-emerald-300">'frontend'</span>,
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-emerald-300">'backend'</span>,
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-emerald-300">'devops'</span>,
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-emerald-300">'ui-design'</span>
+                  </p>
+                  <p>];</p>
+                  <p class="mt-3">
+                    <span class="text-fuchsia-400">function</span>
+                    <span class="text-amber-300"> livrerProjet</span>() {
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-fuchsia-400">return</span>
+                    <span class="text-emerald-300">
+                      "qualité, performance, autonomie"
+                    </span>
+                    ;
+                  </p>
+                  <p>}</p>
+                </div>
+
+              </div>
+                <div class="grid grid-cols-3 gap-3">
+                  <div class="rounded-2xl border border-slate-200 bg-paper p-4 text-center dark:border-white/10 dark:bg-night-900"><p class="text-xs font-medium text-slate-500 dark:text-slate-400">Performance</p><p class="mt-1 text-xl font-extrabold text-brand-600 dark:text-brand-300">98/100</p></div>
+                  <div class="rounded-2xl border border-slate-200 bg-paper p-4 text-center dark:border-white/10 dark:bg-night-900"><p class="text-xs font-medium text-slate-500 dark:text-slate-400">Accessibilité</p><p class="mt-1 text-xl font-extrabold text-brand-600 dark:text-brand-300">AA</p></div>
+                  <div class="rounded-2xl border border-slate-200 bg-paper p-4 text-center dark:border-white/10 dark:bg-night-900"><p class="text-xs font-medium text-slate-500 dark:text-slate-400">SEO</p><p class="mt-1 text-xl font-extrabold text-brand-600 dark:text-brand-300">100</p></div>
+                </div>
+                <div class="flex flex-wrap gap-2 pb-2">
+                  <span class="animate-float rounded-full border border-brand-600/20 bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-400/10 dark:text-brand-300">React</span>
+                  <span class="animate-floatDelayed rounded-full border border-brand-600/20 bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-400/10 dark:text-brand-300">Node.js</span>
+                  <span class="animate-float rounded-full border border-brand-600/20 bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-400/10 dark:text-brand-300">Tailwind CSS</span>
+                  <span class="animate-floatDelayed rounded-full border border-brand-600/20 bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-brand-400/10 dark:text-brand-300">PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="scroll-mt-28 py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl" data-reveal>
+            <p
+              class="text-sm font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400"
+            >
+              Services
+            </p>
+
+            <h2
+              class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+            >
+              Ce que notre équipe peut construire pour vous
+            </h2>
+
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+              Nous intervenons de la conception à la mise en production, avec
+              une attention forte portée à la qualité du code, à l’ergonomie
+              et à la performance.
+            </p>
+          </div>
+
+          <div
+            class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+          >
+            <article
+class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 transition duration-500 hover:-translate-y-2 hover:border-brand-600/40 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:border-brand-400/40 dark:hover:shadow-brand-400/10"               data-reveal
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6.75 7.5l-3 4.5 3 4.5m10.5-9 3 4.5-3 4.5M14.25 3.75l-4.5 16.5"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                Développement web
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Sites vitrines, plateformes métier, dashboards et applications
+                web complètes avec des technologies modernes.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+                  React, Vue, Next.js
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+                  API REST et GraphQL
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+                  Intégration de paiement
+                </li>
+              </ul>
+            </article>
+
+            <article
+class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 transition duration-500 hover:-translate-y-2 hover:border-brand-600/40 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:border-brand-400/40 dark:hover:shadow-brand-400/10"               data-reveal
+              data-reveal-delay="100"
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-fuchsia-100 text-fuchsia-600 dark:bg-fuchsia-500/15 dark:text-fuchsia-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                Applications mobiles
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Applications iOS et Android fluides, maintenables et pensées
+                pour offrir une excellente expérience utilisateur.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-fuchsia-500"></span>
+                  React Native
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-fuchsia-500"></span>
+                  Flutter
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-fuchsia-500"></span>
+                  Publication stores
+                </li>
+              </ul>
+            </article>
+
+            <article
+class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 transition duration-500 hover:-translate-y-2 hover:border-brand-600/40 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:border-brand-400/40 dark:hover:shadow-brand-400/10"               data-reveal
+              data-reveal-delay="200"
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-100 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0 6h.008v.008h-.008v-.008Zm-3-6h.008v.008h-.008v-.008Zm0 6h.008v.008h-.008v-.008Z"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                Backend & API
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Architecture serveur robuste, bases de données, authentification,
+                sécurité et montée en charge.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Node.js, NestJS
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  PostgreSQL, MongoDB
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Authentification sécurisée
+                </li>
+              </ul>
+            </article>
+
+            <article
+class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 transition duration-500 hover:-translate-y-2 hover:border-brand-600/40 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:border-brand-400/40 dark:hover:shadow-brand-400/10"               data-reveal
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-cyan-100 text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                UI / UX
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Interfaces claires, accessibles et agréables à utiliser,
+                pensées pour convertir et fidéliser vos utilisateurs.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                  Design system
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                  Prototypage
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                  Accessibilité
+                </li>
+              </ul>
+            </article>
+
+            <article
+class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 transition duration-500 hover:-translate-y-2 hover:border-brand-600/40 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:border-brand-400/40 dark:hover:shadow-brand-400/10"               data-reveal
+              data-reveal-delay="100"
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-100 text-amber-600 dark:bg-amber-500/15 dark:text-amber-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                DevOps & déploiement
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Mise en production, CI/CD, monitoring, hébergement cloud et
+                automatisation des déploiements.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                  Docker
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                  GitHub Actions
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                  Vercel, AWS, OVH
+                </li>
+              </ul>
+            </article>
+
+            <article
+class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 transition duration-500 hover:-translate-y-2 hover:border-brand-600/40 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:border-brand-400/40 dark:hover:shadow-brand-400/10"               data-reveal
+              data-reveal-delay="200"
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-100 text-rose-600 dark:bg-rose-500/15 dark:text-rose-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                Performance & SEO
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Optimisation du temps de chargement, du référencement naturel
+                et des indicateurs Core Web Vitals.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+                  Audit Lighthouse
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+                  Optimisation images
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+                  Données structurées
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+<section id="tarifs" class="scroll-mt-28 py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-2xl" data-reveal>
+      <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-600 dark:text-brand-300">Tarifs</p>
+      <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-ink dark:text-white sm:text-4xl">Des offres claires, sans mauvaise surprise</h2>
+      <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">Chaque projet est unique. Voici nos tarifs de départ pour les prestations les plus demandées. Un devis détaillé est toujours fourni avant engagement.</p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+      <!-- CARTE 1 : Site Web -->
+      <article class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 transition duration-500 hover:-translate-y-2 hover:border-brand-600/40 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:border-brand-400/40 dark:hover:shadow-brand-400/10" data-reveal>
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-cyan-100 text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+        </div>
+
+        <h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">Site Web</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">Vitrine professionnelle pour présenter votre activité.</p>
+
+        <div class="mt-6 flex items-baseline gap-2">
+          <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">à partir de</span>
+          <span class="text-4xl font-black text-ink dark:text-white">100K<span class="text-base font-bold text-slate-500 dark:text-slate-400">Xaf</span></span>
+        </div>
+
+        <ul class="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Jusqu'à 5 pages</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Design responsive</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Formulaire de contact</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>SEO de base</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Hébergement &amp; déploiement</li>
+        </ul>
+
+        <a href="#contact" class="mt-8 block rounded-xl border border-slate-200 bg-white px-5 py-3 text-center text-sm font-semibold text-ink transition hover:border-brand-600/40 hover:text-brand-700 dark:border-white/10 dark:bg-night-900 dark:text-white dark:hover:border-brand-400/40 dark:hover:text-brand-300">Demander un devis</a>
+      </article>
+
+      <!-- CARTE 2 : Application Web -->
+      <article class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 transition duration-500 hover:-translate-y-2 hover:border-brand-600/40 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:border-brand-400/40 dark:hover:shadow-brand-400/10" data-reveal data-reveal-delay="80">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-100 text-brand-700 dark:bg-brand-500/15 dark:text-brand-300" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l-3 4.5 3 4.5m10.5-9 3 4.5-3 4.5M14.25 3.75l-4.5 16.5" /></svg>
+        </div>
+
+        <h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">Application Web</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">SaaS, dashboard ou plateforme métier sur mesure.</p>
+
+        <div class="mt-6 flex items-baseline gap-2">
+          <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">à partir de</span>
+          <span class="text-4xl font-black text-ink dark:text-white">200K<span class="text-base font-bold text-slate-500 dark:text-slate-400">Xaf</span></span>
+        </div>
+
+        <ul class="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Frontend + Backend complets</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Authentification sécurisée</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Base de données &amp; API</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Dashboard d'administration</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>CI/CD &amp; déploiement cloud</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Documentation technique</li>
+        </ul>
+
+        <a href="#contact" class="mt-8 block rounded-xl border border-slate-200 bg-white px-5 py-3 text-center text-sm font-semibold text-ink transition hover:border-brand-600/40 hover:text-brand-700 dark:border-white/10 dark:bg-night-900 dark:text-white dark:hover:border-brand-400/40 dark:hover:text-brand-300">Demander un devis</a>
+      </article>
+
+      <!-- CARTE 3 : Application Mobile (POPULAIRE) -->
+      <article class="group relative overflow-hidden rounded-3xl border-2 border-brand-600 bg-gradient-to-b from-white to-brand-50/40 p-8 shadow-xl shadow-brand-600/10 transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/25 dark:border-brand-400 dark:from-night-800 dark:to-brand-500/5 dark:shadow-brand-400/10" data-reveal data-reveal-delay="160">
+        <!-- Badge Populaire -->
+        <span class="absolute right-6 top-6 inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg shadow-brand-600/30 dark:bg-brand-400 dark:text-night-950">
+          <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd"/></svg>
+          Populaire
+        </span>
+
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-600 text-white dark:bg-brand-400 dark:text-night-950" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+        </div>
+
+        <h3 class="mt-6 text-xl font-bold text-ink dark:text-white">Application Mobile</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">App iOS + Android native ou cross-platform.</p>
+
+        <div class="mt-6 flex items-baseline gap-2">
+          <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">à partir de</span>
+          <span class="text-4xl font-black text-ink dark:text-white">250k<span class="text-base font-bold text-slate-500 dark:text-slate-400">Xaf</span></span>
+        </div>
+
+        <ul class="mt-6 space-y-3 text-sm text-slate-700 dark:text-slate-300">
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>iOS &amp; Android inclus</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Design UI/UX dédié</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Notifications push</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Publication stores (App Store &amp; Play Store)</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Authentification biométrique</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Backend &amp; API inclus</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Analytics &amp; suivi</li>
+        </ul>
+
+        <a href="#contact" class="mt-8 block rounded-xl bg-brand-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:bg-brand-400 dark:text-night-950 dark:shadow-brand-400/20 dark:hover:bg-brand-300">Démarrer mon projet</a>
+      </article>
+
+      <!-- CARTE 4 : Bots & Automatisation -->
+      <article class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 transition duration-500 hover:-translate-y-2 hover:border-brand-600/40 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:border-brand-400/40 dark:hover:shadow-brand-400/10" data-reveal data-reveal-delay="240">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-fuchsia-100 text-fuchsia-600 dark:bg-fuchsia-500/15 dark:text-fuchsia-400" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" /></svg>
+        </div>
+
+        <h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">Bots &amp; Automatisation</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">Bots Discord, Telegram, Slack ou automatisation métier.</p>
+
+        <div class="mt-6 flex items-baseline gap-2">
+          <span class="text-sm font-semibold text-slate-500 dark:text-slate-400">à partir de</span>
+          <span class="text-4xl font-black text-ink dark:text-white">100k<span class="text-base font-bold text-slate-500 dark:text-slate-400">Xaf</span></span>
+        </div>
+
+        <ul class="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Bot multi-plateformes</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Intégration API / Webhooks</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Intelligence conversationnelle</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Dashboard de gestion</li>
+          <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg>Maintenance 30 jours</li>
+        </ul>
+
+        <a href="#contact" class="mt-8 block rounded-xl border border-slate-200 bg-white px-5 py-3 text-center text-sm font-semibold text-ink transition hover:border-brand-600/40 hover:text-brand-700 dark:border-white/10 dark:bg-night-900 dark:text-white dark:hover:border-brand-400/40 dark:hover:text-brand-300">Demander un devis</a>
+      </article>
+
+    </div>
+
+    <!-- Bandeau sous les cartes -->
+    <div class="mt-14 rounded-3xl border border-slate-200 bg-gradient-to-r from-brand-600/5 via-cyan-500/5 to-brand-600/5 p-8 text-center dark:border-white/10 dark:from-brand-400/5 dark:via-cyan-400/5 dark:to-brand-400/5" data-reveal>
+      <p class="text-base font-semibold text-ink dark:text-white">Projet sur mesure ou budget spécifique ?</p>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Nous adaptons nos offres à vos besoins réels. Un devis détaillé vous est fourni sous 48h.</p>
+      <a href="#contact" class="mt-5 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:bg-brand-400 dark:text-night-950 dark:shadow-brand-400/20 dark:hover:bg-brand-300">
+        Obtenir un devis personnalisé
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12l-3.75 3.75M16.5 12H3" /></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+      <section id="equipe" class="relative scroll-mt-28 overflow-hidden bg-white py-24 dark:bg-night-900">
+        <div class="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-brand-500/10 blur-3xl" aria-hidden="true"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between" data-reveal>
+            <div class="max-w-2xl">
+              <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-600 dark:text-brand-300">Équipe</p>
+              <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-ink dark:text-white sm:text-4xl">Une équipe complémentaire et expérimentée</h2>
+              <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">Chaque projet bénéficie d'une vraie synergie entre développement, design, qualité et déploiement. Cliquez sur un membre pour voir son profil détaillé.</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button id="team-prev" type="button" aria-label="Membre précédent" class="grid h-12 w-12 place-items-center rounded-xl border border-slate-200 bg-white text-ink transition hover:border-brand-600/40 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-white dark:hover:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg></button>
+              <button id="team-next" type="button" aria-label="Membre suivant" class="grid h-12 w-12 place-items-center rounded-xl border border-slate-200 bg-white text-ink transition hover:border-brand-600/40 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-white dark:hover:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg></button>
+            </div>
+          </div>
+          <div id="team-track" class="no-scrollbar mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6 pr-4"></div>
+          <div id="team-dots" class="mt-2 flex justify-center gap-3"></div>
+        </div>
+      </section>
+
+      <section id="projets" class="scroll-mt-28 py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl" data-reveal>
+            <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-600 dark:text-brand-300">Projets</p>
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-ink dark:text-white sm:text-4xl">Quelques réalisations récentes</h2>
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">Une sélection de projets qui illustrent notre capacité à livrer des produits complets, modernes et fiables.</p>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-3" role="group" aria-label="Filtrer les projets" data-reveal>
+            <button type="button" data-filter="all" aria-pressed="true" class="filter-button rounded-full border border-ink bg-ink px-5 py-2.5 text-sm font-semibold text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white dark:bg-white dark:text-night-950">Tous</button>
+            <button type="button" data-filter="web" aria-pressed="false" class="filter-button rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-brand-600/40 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-slate-300 dark:hover:text-brand-300">Web apps</button>
+            <button type="button" data-filter="ecommerce" aria-pressed="false" class="filter-button rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-brand-600/40 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-slate-300 dark:hover:text-brand-300">E-commerce</button>
+            <button type="button" data-filter="mobile" aria-pressed="false" class="filter-button rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-brand-600/40 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-slate-300 dark:hover:text-brand-300">Mobile</button>
+            <button type="button" data-filter="design" aria-pressed="false" class="filter-button rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-brand-600/40 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-slate-300 dark:hover:text-brand-300">Design</button>
+          </div>
+          <div class="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            <article class="project-card group overflow-hidden rounded-3xl border border-slate-200 bg-white transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:shadow-brand-400/10" data-category="web" data-reveal>
+              <div class="relative h-52 overflow-hidden bg-gradient-to-br from-brand-600 via-brand-500 to-cyan-400"><div class="bg-grid absolute inset-0 opacity-30" aria-hidden="true"></div><span class="absolute left-5 top-5 rounded-full bg-night-950/30 px-3 py-1 text-xs font-semibold text-white backdrop-blur">SaaS</span><span class="absolute bottom-5 right-5 grid h-11 w-11 translate-y-3 place-items-center rounded-full bg-white text-night-950 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg></span><p class="absolute bottom-5 left-5 text-2xl font-extrabold text-white">Pulse Analytics</p></div>
+              <div class="space-y-4 p-6"><p class="text-sm leading-6 text-slate-600 dark:text-slate-400">Dashboard SaaS de suivi d'activité en temps réel avec visualisation de données, gestion des rôles et exports automatisés.</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Next.js</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">TypeScript</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">PostgreSQL</span></div><div class="flex items-center gap-5 border-t border-slate-100 pt-4 dark:border-white/5"><a href="#" class="text-sm font-semibold text-brand-700 transition hover:text-brand-600 dark:text-brand-300 dark:hover:text-brand-200">Voir le projet</a><a href="#" class="text-sm font-semibold text-slate-500 transition hover:text-ink dark:text-slate-400 dark:hover:text-white">Code GitHub</a></div></div>
+            </article>
+            <article class="project-card group overflow-hidden rounded-3xl border border-slate-200 bg-white transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:shadow-brand-400/10" data-category="ecommerce" data-reveal data-reveal-delay="80">
+              <div class="relative h-52 overflow-hidden bg-gradient-to-br from-emerald-600 via-brand-500 to-teal-400"><div class="bg-grid absolute inset-0 opacity-30" aria-hidden="true"></div><span class="absolute left-5 top-5 rounded-full bg-night-950/30 px-3 py-1 text-xs font-semibold text-white backdrop-blur">E-commerce</span><span class="absolute bottom-5 right-5 grid h-11 w-11 translate-y-3 place-items-center rounded-full bg-white text-night-950 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg></span><p class="absolute bottom-5 left-5 text-2xl font-extrabold text-white">Nova Shop</p></div>
+              <div class="space-y-4 p-6"><p class="text-sm leading-6 text-slate-600 dark:text-slate-400">Boutique en ligne headless avec paiement sécurisé, gestion de stock, SEO optimisé et back-office sur mesure.</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Nuxt</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Stripe</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Sanity</span></div><div class="flex items-center gap-5 border-t border-slate-100 pt-4 dark:border-white/5"><a href="#" class="text-sm font-semibold text-brand-700 transition hover:text-brand-600 dark:text-brand-300 dark:hover:text-brand-200">Voir le projet</a><a href="#" class="text-sm font-semibold text-slate-500 transition hover:text-ink dark:text-slate-400 dark:hover:text-white">Étude de cas</a></div></div>
+            </article>
+            <article class="project-card group overflow-hidden rounded-3xl border border-slate-200 bg-white transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:shadow-brand-400/10" data-category="mobile" data-reveal data-reveal-delay="160">
+              <div class="relative h-52 overflow-hidden bg-gradient-to-br from-cyan-600 via-cyan-500 to-brand-400"><div class="bg-grid absolute inset-0 opacity-30" aria-hidden="true"></div><span class="absolute left-5 top-5 rounded-full bg-night-950/30 px-3 py-1 text-xs font-semibold text-white backdrop-blur">Mobile</span><span class="absolute bottom-5 right-5 grid h-11 w-11 translate-y-3 place-items-center rounded-full bg-white text-night-950 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg></span><p class="absolute bottom-5 left-5 text-2xl font-extrabold text-white">Flow Bank</p></div>
+              <div class="space-y-4 p-6"><p class="text-sm leading-6 text-slate-600 dark:text-slate-400">Application mobile bancaire avec authentification biométrique, notifications intelligentes et suivi budgétaire.</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">React Native</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Firebase</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Node.js</span></div><div class="flex items-center gap-5 border-t border-slate-100 pt-4 dark:border-white/5"><a href="#" class="text-sm font-semibold text-brand-700 transition hover:text-brand-600 dark:text-brand-300 dark:hover:text-brand-200">Voir le projet</a><a href="#" class="text-sm font-semibold text-slate-500 transition hover:text-ink dark:text-slate-400 dark:hover:text-white">Prototype Figma</a></div></div>
+            </article>
+            <article class="project-card group overflow-hidden rounded-3xl border border-slate-200 bg-white transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:shadow-brand-400/10" data-category="design" data-reveal>
+              <div class="relative h-52 overflow-hidden bg-gradient-to-br from-teal-700 via-teal-500 to-emerald-400"><div class="bg-grid absolute inset-0 opacity-30" aria-hidden="true"></div><span class="absolute left-5 top-5 rounded-full bg-night-950/30 px-3 py-1 text-xs font-semibold text-white backdrop-blur">Design system</span><span class="absolute bottom-5 right-5 grid h-11 w-11 translate-y-3 place-items-center rounded-full bg-white text-night-950 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg></span><p class="absolute bottom-5 left-5 text-2xl font-extrabold text-white">Orbit UI</p></div>
+              <div class="space-y-4 p-6"><p class="text-sm leading-6 text-slate-600 dark:text-slate-400">Bibliothèque de composants réutilisables, tokens de design, documentation interactive et accessibilité intégrée.</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Figma</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Storybook</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Tailwind</span></div><div class="flex items-center gap-5 border-t border-slate-100 pt-4 dark:border-white/5"><a href="#" class="text-sm font-semibold text-brand-700 transition hover:text-brand-600 dark:text-brand-300 dark:hover:text-brand-200">Voir le projet</a><a href="#" class="text-sm font-semibold text-slate-500 transition hover:text-ink dark:text-slate-400 dark:hover:text-white">Documentation</a></div></div>
+            </article>
+            <article class="project-card group overflow-hidden rounded-3xl border border-slate-200 bg-white transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:shadow-brand-400/10" data-category="web" data-reveal data-reveal-delay="80">
+              <div class="relative h-52 overflow-hidden bg-gradient-to-br from-brand-700 via-teal-500 to-cyan-400"><div class="bg-grid absolute inset-0 opacity-30" aria-hidden="true"></div><span class="absolute left-5 top-5 rounded-full bg-night-950/30 px-3 py-1 text-xs font-semibold text-white backdrop-blur">Plateforme</span><span class="absolute bottom-5 right-5 grid h-11 w-11 translate-y-3 place-items-center rounded-full bg-white text-night-950 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg></span><p class="absolute bottom-5 left-5 text-2xl font-extrabold text-white">EduSpace</p></div>
+              <div class="space-y-4 p-6"><p class="text-sm leading-6 text-slate-600 dark:text-slate-400">Plateforme e-learning avec visioconférence, gestion de cours, quiz interactifs et suivi de progression.</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">React</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">NestJS</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">WebRTC</span></div><div class="flex items-center gap-5 border-t border-slate-100 pt-4 dark:border-white/5"><a href="#" class="text-sm font-semibold text-brand-700 transition hover:text-brand-600 dark:text-brand-300 dark:hover:text-brand-200">Voir le projet</a><a href="#" class="text-sm font-semibold text-slate-500 transition hover:text-ink dark:text-slate-400 dark:hover:text-white">Code GitHub</a></div></div>
+            </article>
+            <article class="project-card group overflow-hidden rounded-3xl border border-slate-200 bg-white transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:hover:shadow-brand-400/10" data-category="ecommerce" data-reveal data-reveal-delay="160">
+              <div class="relative h-52 overflow-hidden bg-gradient-to-br from-teal-600 via-emerald-500 to-cyan-400"><div class="bg-grid absolute inset-0 opacity-30" aria-hidden="true"></div><span class="absolute left-5 top-5 rounded-full bg-night-950/30 px-3 py-1 text-xs font-semibold text-white backdrop-blur">Marketplace</span><span class="absolute bottom-5 right-5 grid h-11 w-11 translate-y-3 place-items-center rounded-full bg-white text-night-950 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg></span><p class="absolute bottom-5 left-5 text-2xl font-extrabold text-white">Kraft Market</p></div>
+              <div class="space-y-4 p-6"><p class="text-sm leading-6 text-slate-600 dark:text-slate-400">Marketplace multi-vendeurs avec messagerie intégrée, paiement fractionné et tableau de bord vendeur.</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Next.js</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Prisma</span><span class="rounded-full bg-brand-600/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">Stripe Connect</span></div><div class="flex items-center gap-5 border-t border-slate-100 pt-4 dark:border-white/5"><a href="#" class="text-sm font-semibold text-brand-700 transition hover:text-brand-600 dark:text-brand-300 dark:hover:text-brand-200">Voir le projet</a><a href="#" class="text-sm font-semibold text-slate-500 transition hover:text-ink dark:text-slate-400 dark:hover:text-white">Étude de cas</a></div></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="temoignages" class="scroll-mt-28 bg-white py-24 dark:bg-night-900">
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl" data-reveal>
+            <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-600 dark:text-brand-300">Témoignages</p>
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-ink dark:text-white sm:text-4xl">Ce que disent nos clients</h2>
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">Une relation de confiance, une communication claire et des livrables de qualité.</p>
+          </div>
+          <div class="relative mt-12" data-reveal>
+            <div class="overflow-hidden rounded-[2rem] border border-slate-200 bg-paper shadow-xl dark:border-white/10 dark:bg-night-800">
+              <div id="testimonial-track" class="flex transition-transform duration-700 ease-out">
+                <figure class="w-full shrink-0 p-10 sm:p-14">
+                  <div class="flex gap-1 text-brand-500 dark:text-brand-300" aria-label="5 étoiles sur 5"><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg></div>
+                  <blockquote class="mt-6 text-lg leading-8 text-slate-700 dark:text-slate-300">“Une équipe très professionnelle, réactive et force de proposition. Le produit livré a dépassé nos attentes, tant sur la qualité technique que sur l'expérience utilisateur.”</blockquote>
+                  <figcaption class="mt-8 flex items-center gap-4"><span class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-tr from-brand-600 to-cyan-400 text-sm font-extrabold text-white">CL</span><span><span class="block font-bold text-ink dark:text-white">Claire Lambert</span><span class="block text-sm text-slate-500 dark:text-slate-400">CEO, Nova Studio</span></span></figcaption>
+                </figure>
+                <figure class="w-full shrink-0 p-10 sm:p-14">
+                  <div class="flex gap-1 text-brand-500 dark:text-brand-300" aria-label="5 étoiles sur 5"><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg></div>
+                  <blockquote class="mt-6 text-lg leading-8 text-slate-700 dark:text-slate-300">“Excellente communication, respect des délais et vraie maîtrise technique. Nous avons pu avancer vite sans sacrifier la qualité.”</blockquote>
+                  <figcaption class="mt-8 flex items-center gap-4"><span class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-tr from-brand-600 to-cyan-400 text-sm font-extrabold text-white">YD</span><span><span class="block font-bold text-ink dark:text-white">Yanis Delacroix</span><span class="block text-sm text-slate-500 dark:text-slate-400">CTO, Finlyse</span></span></figcaption>
+                </figure>
+                <figure class="w-full shrink-0 p-10 sm:p-14">
+                  <div class="flex gap-1 text-brand-500 dark:text-brand-300" aria-label="5 étoiles sur 5"><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg><svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.15c.97 0 1.37 1.24.59 1.81l-3.36 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.35-2.44a1 1 0 0 0-1.18 0l-3.35 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.08 9.38c-.78-.57-.38-1.81.6-1.81h4.14a1 1 0 0 0 .95-.69l1.28-3.95Z"/></svg></div>
+                  <blockquote class="mt-6 text-lg leading-8 text-slate-700 dark:text-slate-300">“Leur accompagnement a été déterminant dans la refonte de notre plateforme. L'ergonomie et la performance sont nettement meilleures.”</blockquote>
+                  <figcaption class="mt-8 flex items-center gap-4"><span class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-tr from-brand-600 to-cyan-400 text-sm font-extrabold text-white">RM</span><span><span class="block font-bold text-ink dark:text-white">Roxane Morel</span><span class="block text-sm text-slate-500 dark:text-slate-400">Product Manager, EduSpace</span></span></figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="mt-8 flex items-center justify-center gap-6">
+              <button id="testimonial-prev" type="button" aria-label="Témoignage précédent" class="grid h-12 w-12 place-items-center rounded-xl border border-slate-200 bg-white text-ink transition hover:border-brand-600/40 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-white dark:hover:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg></button>
+              <div class="flex items-center gap-3"><span id="testimonial-counter" class="text-sm font-semibold text-slate-500 dark:text-slate-400">01 / 03</span><div id="testimonial-dots" class="flex items-center gap-2"></div></div>
+              <button id="testimonial-next" type="button" aria-label="Témoignage suivant" class="grid h-12 w-12 place-items-center rounded-xl border border-slate-200 bg-white text-ink transition hover:border-brand-600/40 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-800 dark:text-white dark:hover:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="technologies" class="scroll-mt-28 py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl" data-reveal>
+            <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-600 dark:text-brand-300">Technologies</p>
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-ink dark:text-white sm:text-4xl">Notre stack de prédilection</h2>
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">Nous choisissons toujours les technologies les plus adaptées au contexte projet, à la maintenabilité et aux objectifs métier.</p>
+          </div>
+        </div>
+        <div class="marquee relative mt-12 overflow-hidden border-y border-slate-200 bg-white py-5 dark:border-white/10 dark:bg-night-900" aria-hidden="true" data-reveal>
+          <div id="marquee-track" class="marquee-track flex w-max items-center gap-10 pr-10"></div>
+        </div>
+        <div class="mx-auto mt-12 max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div id="tech-grid" class="flex flex-wrap justify-center gap-3" data-reveal></div>
+        </div>
+      </section>
+
+      <section id="contact" class="scroll-mt-28 bg-white py-24 dark:bg-night-900">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+            <div data-reveal>
+              <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-600 dark:text-brand-300">Contact</p>
+              <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-ink dark:text-white sm:text-4xl">Discutons de votre projet</h2>
+              <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">Vous avez un besoin de site web, d'application, de refonte ou de renfort technique ? Décrivez-nous votre projet et nous vous répondons rapidement.</p>
+              <dl class="mt-10 space-y-6">
+                <div class="flex items-center gap-4"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-600/10 text-brand-700 dark:bg-brand-400/10 dark:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg></span><div><dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Email</dt><dd class="font-semibold text-ink dark:text-white">contact@evodevs.fr</dd></div></div>
+                <div class="flex items-center gap-4"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-600/10 text-brand-700 dark:bg-brand-400/10 dark:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg></span><div><dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Téléphone</dt><dd class="font-semibold text-ink dark:text-white">+33 6 12 34 56 78</dd></div></div>
+                <div class="flex items-center gap-4"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-600/10 text-brand-700 dark:bg-brand-400/10 dark:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg></span><div><dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Localisation</dt><dd class="font-semibold text-ink dark:text-white">Paris, France — remote possible</dd></div></div>
+              </dl>
+            </div>
+            <form id="contact-form" class="rounded-[2rem] border border-slate-200 bg-paper p-8 shadow-xl dark:border-white/10 dark:bg-night-800 sm:p-10" data-reveal data-reveal-delay="120">
+              <div class="grid gap-6 sm:grid-cols-2">
+                <div><label for="name" class="mb-2 block text-sm font-semibold text-ink dark:text-white">Nom complet</label><input id="name" name="name" type="text" required placeholder="Votre nom" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-ink placeholder-slate-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-white/10 dark:bg-night-900 dark:text-white" /></div>
+                <div><label for="email" class="mb-2 block text-sm font-semibold text-ink dark:text-white">Email</label><input id="email" name="email" type="email" required placeholder="vous@exemple.fr" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-ink placeholder-slate-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-white/10 dark:bg-night-900 dark:text-white" /></div>
+              </div>
+              <div class="mt-6"><label for="subject" class="mb-2 block text-sm font-semibold text-ink dark:text-white">Sujet</label><select id="subject" name="subject" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-ink transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-white/10 dark:bg-night-900 dark:text-white"><option>Création de site web</option><option>Application web / mobile</option><option>Refonte de plateforme</option><option>Renfort technique</option><option>Autre</option></select></div>
+              <div class="mt-6"><label for="message" class="mb-2 block text-sm font-semibold text-ink dark:text-white">Message</label><textarea id="message" name="message" rows="5" required placeholder="Décrivez votre projet..." class="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-ink placeholder-slate-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-white/10 dark:bg-night-900 dark:text-white"></textarea></div>
+              <button id="submit-button" type="submit" class="mt-8 w-full rounded-xl bg-brand-600 px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:bg-brand-400 dark:text-night-950 dark:hover:bg-brand-300">Envoyer le message</button>
+              <p id="form-status" role="status" class="mt-4 hidden text-center text-sm font-semibold text-brand-700 dark:text-brand-300"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 py-12 dark:border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+          <div class="max-w-sm">
+            <a href="#accueil" class="flex items-center gap-3">
+              <svg viewBox="0 0 72 72" class="h-10 w-10" aria-hidden="true"><circle cx="36" cy="36" r="28" fill="none" stroke-width="4" class="stroke-brand-600 dark:stroke-brand-400" /><circle cx="36" cy="8" r="5" class="fill-brand-600 dark:fill-brand-400" /><circle cx="36" cy="64" r="5" class="fill-brand-600 dark:fill-brand-400" /><circle cx="8" cy="36" r="5" class="fill-brand-600 dark:fill-brand-400" /><circle cx="64" cy="36" r="5" class="fill-brand-600 dark:fill-brand-400" /><text x="36" y="46" text-anchor="middle" style="font-family: Inter, sans-serif; font-weight: 800; font-size: 27px" class="fill-ink dark:fill-white">ED</text></svg>
+              <span class="text-lg font-extrabold tracking-tight text-ink dark:text-white"><span class="text-brand-600 dark:text-brand-400">&lt;</span>Ev<span class="text-brand-600 dark:text-brand-400">o</span>Dev<span class="text-brand-600 dark:text-brand-400">s</span>/<span class="text-brand-600 dark:text-brand-400">&gt;</span></span>
+            </a>
+            <p class="mt-3 text-xs font-bold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">Team</p>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-[0.24em] text-brand-600 dark:text-brand-300">&lt; Digital Evolution &gt;</p>
+            <p class="mt-5 text-sm leading-6 text-slate-600 dark:text-slate-400">Équipe de développeurs passionnés par la création de produits web modernes, performants et accessibles.</p>
+          </div>
+          <nav class="grid gap-3" aria-label="Navigation footer">
+            <a href="#services" class="text-sm font-medium text-slate-600 transition hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-300">Services</a>
+            <a href="#equipe" class="text-sm font-medium text-slate-600 transition hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-300">Équipe</a>
+            <a href="#projets" class="text-sm font-medium text-slate-600 transition hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-300">Projets</a>
+            <a href="#contact" class="text-sm font-medium text-slate-600 transition hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-300">Contact</a>
+          </nav>
+          <div class="flex items-center gap-4">
+            <a href="#" aria-label="GitHub" class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition hover:border-brand-600/40 hover:text-brand-700 dark:border-white/10 dark:bg-night-800 dark:text-slate-300 dark:hover:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z" clip-rule="evenodd" /></svg></a>
+            <a href="#" aria-label="LinkedIn" class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition hover:border-brand-600/40 hover:text-brand-700 dark:border-white/10 dark:bg-night-800 dark:text-slate-300 dark:hover:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.554V9h3.565v11.452z" /></svg></a>
+          </div>
+        </div>
+        <p class="mt-10 border-t border-slate-200 pt-6 text-sm text-slate-500 dark:border-white/10 dark:text-slate-400">© <span id="year"></span> EvoDevs. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <div id="member-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+      <div id="modal-backdrop" class="absolute inset-0 bg-night-950/80 opacity-0 backdrop-blur-md transition duration-300"></div>
+      <div id="modal-panel" class="relative max-h-[90vh] w-full max-w-5xl translate-y-6 scale-95 overflow-y-auto rounded-[2rem] border border-slate-200 bg-white opacity-0 shadow-2xl transition duration-300 dark:border-white/10 dark:bg-night-800">
+        <button id="modal-close" type="button" aria-label="Fermer le profil" class="absolute right-5 top-5 z-10 grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white/90 text-ink transition hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-950/70 dark:text-white dark:hover:text-brand-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg></button>
+        <div class="grid lg:grid-cols-[320px_1fr]">
+          <div class="relative h-72 sm:h-80 lg:h-auto lg:min-h-full">
+            <img id="modal-image" src="" alt="" class="absolute inset-0 h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/30 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5">
+              <span id="modal-availability" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-night-950/70 px-3 py-1 text-xs font-semibold text-brand-300 backdrop-blur"></span>
+              <p id="modal-role" class="mt-4 text-xs font-bold uppercase tracking-[0.24em] text-brand-300"></p>
+              <h2 id="modal-name" class="mt-2 text-3xl font-extrabold text-white"></h2>
+              <p id="modal-location" class="mt-2 text-sm text-slate-300"></p>
+            </div>
+          </div>
+          <div class="p-8 sm:p-10">
+            <p id="modal-bio" class="text-base leading-7 text-slate-600 dark:text-slate-300"></p>
+            <div class="mt-10"><h3 class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Compétences</h3><div id="modal-skills" class="mt-4 flex flex-wrap gap-2"></div></div>
+            <div class="mt-10"><h3 class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Expériences</h3><ol id="modal-experience" class="mt-5 space-y-5"></ol></div>
+            <div class="mt-10 border-t border-slate-200 pt-8 dark:border-white/10">
+              <h3 class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Contact & portfolio</h3>
+              <div class="mt-5 flex flex-wrap gap-4">
+                <a id="modal-portfolio" href="#" target="_blank" rel="noopener noreferrer" class="rounded-xl bg-brand-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:bg-brand-400 dark:text-night-950 dark:hover:bg-brand-300">Voir le portfolio</a>
+                <a id="modal-email" href="#" class="rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-ink transition hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-900 dark:text-white dark:hover:text-brand-300"><span id="modal-email-label"></span></a>
+                <a id="modal-phone" href="#" class="rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-ink transition hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-white/10 dark:bg-night-900 dark:text-white dark:hover:text-brand-300"><span id="modal-phone-label"></span></a>
+              </div>
+              <div id="modal-socials" class="mt-6 flex flex-wrap gap-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ <script src="./js/app.js"></script>
+  </body>
+</html>

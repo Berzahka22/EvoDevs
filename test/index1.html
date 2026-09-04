@@ -1,0 +1,2627 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DevCollective — Portfolio d'équipe de développeurs</title>
+    <meta
+      name="description"
+      content="Portfolio professionnel d'une équipe de développeurs : projets, expertises, équipe, services et contact."
+    />
+
+    <!-- Applique le thème avant l'affichage pour éviter le flash -->
+    <script>
+      const rootElement = document.documentElement;
+      const savedTheme = localStorage.getItem("theme");
+
+      if (
+        savedTheme === "dark" ||
+        (!savedTheme &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        rootElement.classList.add("dark");
+      }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuration Tailwind -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: [
+                "Inter",
+                "ui-sans-serif",
+                "system-ui",
+                "-apple-system",
+                "Segoe UI",
+                "Roboto",
+                "Arial",
+                "sans-serif",
+              ],
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-12px)" },
+              },
+            },
+            animation: {
+              float: "float 7s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Police Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      ::selection {
+        background-color: rgba(79, 70, 229, 0.25);
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .bg-grid {
+        background-image:
+          linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+
+      .glass {
+        backdrop-filter: blur(14px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        [data-reveal] {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-white text-slate-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-200"
+  >
+    <a
+      href="#contenu"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-white"
+    >
+      Aller au contenu
+    </a>
+
+    <!-- Header -->
+    <header
+      id="site-header"
+      class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300"
+    >
+      <div
+        class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+      >
+        <a
+          href="#accueil"
+          class="flex items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+        >
+          <span
+            class="grid h-10 w-10 place-items-center rounded-xl bg-slate-900 text-white shadow-lg dark:bg-white dark:text-slate-900"
+            aria-hidden="true"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="h-5 w-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+              />
+            </svg>
+          </span>
+
+          <span class="text-lg font-extrabold tracking-tight">
+            DevCollective
+          </span>
+        </a>
+
+        <!-- Navigation desktop -->
+        <nav
+          class="hidden items-center gap-1 lg:flex"
+          aria-label="Navigation principale"
+        >
+          <a
+            href="#services"
+            class="nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-white"
+          >
+            Services
+          </a>
+
+          <a
+            href="#equipe"
+            class="nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-white"
+          >
+            Équipe
+          </a>
+
+          <a
+            href="#projets"
+            class="nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-white"
+          >
+            Projets
+          </a>
+
+          <a
+            href="#temoignages"
+            class="nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-white"
+          >
+            Témoignages
+          </a>
+
+          <a
+            href="#contact"
+            class="nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-white"
+          >
+            Contact
+          </a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Basculer le thème clair ou sombre"
+            aria-pressed="false"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          >
+            <svg
+              id="sun-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="hidden h-5 w-5"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+              />
+            </svg>
+
+            <svg
+              id="moon-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+              />
+            </svg>
+          </button>
+
+          <a
+            href="#contact"
+            class="hidden rounded-xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 sm:inline-flex"
+          >
+            Démarrer un projet
+          </a>
+
+          <button
+            id="mobile-menu-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 lg:hidden"
+          >
+            <span class="sr-only">Ouvrir le menu</span>
+
+            <svg
+              id="menu-open-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+
+            <svg
+              id="menu-close-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="hidden h-5 w-5"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menu mobile -->
+      <div
+        id="mobile-menu"
+        class="hidden border-t border-slate-200/70 bg-white/95 px-4 pb-6 pt-4 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/95 lg:hidden"
+      >
+        <nav class="grid gap-2" aria-label="Navigation mobile">
+          <a
+            href="#services"
+            class="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-900"
+          >
+            Services
+          </a>
+
+          <a
+            href="#equipe"
+            class="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-900"
+          >
+            Équipe
+          </a>
+
+          <a
+            href="#projets"
+            class="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-900"
+          >
+            Projets
+          </a>
+
+          <a
+            href="#temoignages"
+            class="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-900"
+          >
+            Témoignages
+          </a>
+
+          <a
+            href="#contact"
+            class="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-900"
+          >
+            Contact
+          </a>
+        </nav>
+
+        <div
+          class="mt-4 grid gap-3 border-t border-slate-200 pt-4 dark:border-slate-800"
+        >
+          <a
+            href="#contact"
+            class="rounded-xl bg-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-indigo-500"
+          >
+            Démarrer un projet
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenu" class="pt-20">
+      <!-- Hero -->
+      <section
+        id="accueil"
+        class="relative overflow-hidden bg-grid pb-24 pt-20 lg:pb-32 lg:pt-28"
+      >
+        <div
+          class="pointer-events-none absolute -left-32 top-0 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="pointer-events-none absolute -right-24 top-44 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8"
+        >
+          <div data-reveal>
+            <div
+              class="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-xs font-semibold text-indigo-700 dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:text-indigo-300"
+            >
+              <span class="relative flex h-2 w-2">
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"
+                ></span>
+              </span>
+
+              Disponible pour de nouveaux projets
+            </div>
+
+            <h1
+              class="mt-8 text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl xl:text-6xl"
+            >
+              Nous concevons des
+              <span
+                class="bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 bg-clip-text text-transparent"
+              >
+                produits web
+              </span>
+              rapides, élégants et performants
+            </h1>
+
+            <p
+              class="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300"
+            >
+              DevCollective est une équipe de développeurs passionnés qui
+              accompagne startups, agences et entreprises dans la création
+              d’applications web, de sites vitrines, d’API et de plateformes
+              sur mesure.
+            </p>
+
+            <div class="mt-10 flex flex-wrap items-center gap-4">
+              <a
+                href="#projets"
+                class="rounded-xl bg-indigo-600 px-6 py-4 text-sm font-semibold text-white shadow-xl shadow-indigo-600/20 transition hover:-translate-y-0.5 hover:bg-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+              >
+                Voir nos projets
+              </a>
+
+              <a
+                href="#contact"
+                class="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-semibold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800"
+              >
+                Nous contacter
+              </a>
+            </div>
+
+            <dl
+              class="mt-14 grid max-w-xl grid-cols-2 gap-6 sm:grid-cols-4"
+            >
+              <div>
+                <dt
+                  class="text-sm font-medium text-slate-500 dark:text-slate-400"
+                >
+                  Projets livrés
+                </dt>
+                <dd
+                  class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white"
+                >
+                  40+
+                </dd>
+              </div>
+
+              <div>
+                <dt
+                  class="text-sm font-medium text-slate-500 dark:text-slate-400"
+                >
+                  Clients satisfaits
+                </dt>
+                <dd
+                  class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white"
+                >
+                  25+
+                </dd>
+              </div>
+
+              <div>
+                <dt
+                  class="text-sm font-medium text-slate-500 dark:text-slate-400"
+                >
+                  Technologies
+                </dt>
+                <dd
+                  class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white"
+                >
+                  15+
+                </dd>
+              </div>
+
+              <div>
+                <dt
+                  class="text-sm font-medium text-slate-500 dark:text-slate-400"
+                >
+                  Expérience
+                </dt>
+                <dd
+                  class="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white"
+                >
+                  6 ans
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="relative mx-auto w-full max-w-xl" data-reveal data-reveal-delay="150">
+            <div
+              class="absolute -inset-8 rounded-[2rem] bg-gradient-to-tr from-indigo-500/30 via-fuchsia-500/20 to-cyan-500/30 blur-3xl"
+              aria-hidden="true"
+            ></div>
+
+            <div
+              class="relative rounded-3xl border border-slate-200 bg-white/90 p-2 shadow-2xl backdrop-blur dark:border-slate-800 dark:bg-slate-900/90"
+            >
+              <div
+                class="flex items-center gap-2 border-b border-slate-100 px-4 py-3 dark:border-slate-800"
+              >
+                <span class="h-3 w-3 rounded-full bg-rose-400"></span>
+                <span class="h-3 w-3 rounded-full bg-amber-400"></span>
+                <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
+                <span
+                  class="ml-3 text-xs font-medium text-slate-500 dark:text-slate-400"
+                >
+                  studio-dashboard.tsx
+                </span>
+              </div>
+
+              <div class="space-y-4 p-4">
+                <div
+                  class="rounded-2xl bg-slate-950 p-5 font-mono text-xs leading-6 text-slate-100"
+                >
+                  <p>
+                    <span class="text-fuchsia-400">const</span>
+                    <span class="text-cyan-300"> equipe</span>
+                    <span class="text-slate-400"> =</span> [
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-emerald-300">'frontend'</span>,
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-emerald-300">'backend'</span>,
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-emerald-300">'devops'</span>,
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-emerald-300">'ui-design'</span>
+                  </p>
+                  <p>];</p>
+                  <p class="mt-3">
+                    <span class="text-fuchsia-400">function</span>
+                    <span class="text-amber-300"> livrerProjet</span>() {
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-fuchsia-400">return</span>
+                    <span class="text-emerald-300">
+                      "qualité, performance, autonomie"
+                    </span>
+                    ;
+                  </p>
+                  <p>}</p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3">
+                  <div
+                    class="rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-950"
+                  >
+                    <p
+                      class="text-xs font-medium text-slate-500 dark:text-slate-400"
+                    >
+                      Performance
+                    </p>
+                    <p
+                      class="mt-2 text-xl font-bold text-emerald-600 dark:text-emerald-400"
+                    >
+                      98/100
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-950"
+                  >
+                    <p
+                      class="text-xs font-medium text-slate-500 dark:text-slate-400"
+                    >
+                      Accessibilité
+                    </p>
+                    <p
+                      class="mt-2 text-xl font-bold text-indigo-600 dark:text-indigo-400"
+                    >
+                      AA
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-950"
+                  >
+                    <p
+                      class="text-xs font-medium text-slate-500 dark:text-slate-400"
+                    >
+                      SEO
+                    </p>
+                    <p
+                      class="mt-2 text-xl font-bold text-fuchsia-600 dark:text-fuchsia-400"
+                    >
+                      100
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    React
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Node.js
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Tailwind CSS
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    PostgreSQL
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="scroll-mt-28 py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl" data-reveal>
+            <p
+              class="text-sm font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400"
+            >
+              Services
+            </p>
+
+            <h2
+              class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+            >
+              Ce que notre équipe peut construire pour vous
+            </h2>
+
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+              Nous intervenons de la conception à la mise en production, avec
+              une attention forte portée à la qualité du code, à l’ergonomie
+              et à la performance.
+            </p>
+          </div>
+
+          <div
+            class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+          >
+            <article
+              class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-reveal
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6.75 7.5l-3 4.5 3 4.5m10.5-9 3 4.5-3 4.5M14.25 3.75l-4.5 16.5"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                Développement web
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Sites vitrines, plateformes métier, dashboards et applications
+                web complètes avec des technologies modernes.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+                  React, Vue, Next.js
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+                  API REST et GraphQL
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+                  Intégration de paiement
+                </li>
+              </ul>
+            </article>
+
+            <article
+              class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-reveal
+              data-reveal-delay="100"
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-fuchsia-100 text-fuchsia-600 dark:bg-fuchsia-500/15 dark:text-fuchsia-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                Applications mobiles
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Applications iOS et Android fluides, maintenables et pensées
+                pour offrir une excellente expérience utilisateur.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-fuchsia-500"></span>
+                  React Native
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-fuchsia-500"></span>
+                  Flutter
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-fuchsia-500"></span>
+                  Publication stores
+                </li>
+              </ul>
+            </article>
+
+            <article
+              class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-reveal
+              data-reveal-delay="200"
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-100 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0 6h.008v.008h-.008v-.008Zm-3-6h.008v.008h-.008v-.008Zm0 6h.008v.008h-.008v-.008Z"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                Backend & API
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Architecture serveur robuste, bases de données, authentification,
+                sécurité et montée en charge.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Node.js, NestJS
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  PostgreSQL, MongoDB
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Authentification sécurisée
+                </li>
+              </ul>
+            </article>
+
+            <article
+              class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-reveal
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-cyan-100 text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                UI / UX
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Interfaces claires, accessibles et agréables à utiliser,
+                pensées pour convertir et fidéliser vos utilisateurs.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                  Design system
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                  Prototypage
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                  Accessibilité
+                </li>
+              </ul>
+            </article>
+
+            <article
+              class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-reveal
+              data-reveal-delay="100"
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-100 text-amber-600 dark:bg-amber-500/15 dark:text-amber-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                DevOps & déploiement
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Mise en production, CI/CD, monitoring, hébergement cloud et
+                automatisation des déploiements.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                  Docker
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                  GitHub Actions
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                  Vercel, AWS, OVH
+                </li>
+              </ul>
+            </article>
+
+            <article
+              class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-reveal
+              data-reveal-delay="200"
+            >
+              <div
+                class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-100 text-rose-600 dark:bg-rose-500/15 dark:text-rose-400"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605"
+                  />
+                </svg>
+              </div>
+
+              <h3
+                class="mt-6 text-xl font-bold text-slate-900 dark:text-white"
+              >
+                Performance & SEO
+              </h3>
+
+              <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                Optimisation du temps de chargement, du référencement naturel
+                et des indicateurs Core Web Vitals.
+              </p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+                  Audit Lighthouse
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+                  Optimisation images
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+                  Données structurées
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Équipe -->
+      <section
+        id="equipe"
+        class="scroll-mt-28 bg-slate-50 py-24 dark:bg-slate-900/40"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl" data-reveal>
+            <p
+              class="text-sm font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400"
+            >
+              Équipe
+            </p>
+
+            <h2
+              class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+            >
+              Une équipe complémentaire et expérimentée
+            </h2>
+
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+              Chaque projet bénéficie d’une vraie synergie entre développement,
+              design, qualité et déploiement.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <article
+              class="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-950"
+              data-reveal
+            >
+              <div
+                class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-tr from-indigo-500 to-violet-500 text-2xl font-black text-white"
+              >
+                SB
+              </div>
+
+              <h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">
+                Sarah Ben
+              </h3>
+
+              <p class="mt-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                Lead Frontend
+              </p>
+
+              <p class="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                Spécialiste des interfaces performantes, accessibles et
+                centrées utilisateur.
+              </p>
+
+              <div class="mt-6 flex flex-wrap justify-center gap-2">
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  React
+                </span>
+
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  Next.js
+                </span>
+
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  Tailwind
+                </span>
+              </div>
+            </article>
+
+            <article
+              class="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-950"
+              data-reveal
+              data-reveal-delay="100"
+            >
+              <div
+                class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-tr from-fuchsia-500 to-rose-500 text-2xl font-black text-white"
+              >
+                MK
+              </div>
+
+              <h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">
+                Mehdi K.
+              </h3>
+
+              <p class="mt-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                Lead Backend
+              </p>
+
+              <p class="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                Architecture backend, API sécurisées, bases de données et
+                scalabilité.
+              </p>
+
+              <div class="mt-6 flex flex-wrap justify-center gap-2">
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  Node.js
+                </span>
+
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  PostgreSQL
+                </span>
+
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  GraphQL
+                </span>
+              </div>
+            </article>
+
+            <article
+              class="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-950"
+              data-reveal
+              data-reveal-delay="200"
+            >
+              <div
+                class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 text-2xl font-black text-white"
+              >
+                LD
+              </div>
+
+              <h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">
+                Léa Dubois
+              </h3>
+
+              <p class="mt-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                Product Designer
+              </p>
+
+              <p class="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                Design d’interfaces élégantes, parcours utilisateurs et
+                design systems cohérents.
+              </p>
+
+              <div class="mt-6 flex flex-wrap justify-center gap-2">
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  Figma
+                </span>
+
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  UX
+                </span>
+
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  UI
+                </span>
+              </div>
+            </article>
+
+            <article
+              class="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-950"
+              data-reveal
+              data-reveal-delay="300"
+            >
+              <div
+                class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 text-2xl font-black text-white"
+              >
+                AT
+              </div>
+
+              <h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">
+                Amine T.
+              </h3>
+
+              <p class="mt-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                DevOps Engineer
+              </p>
+
+              <p class="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                Automatisation, déploiement continu, monitoring et
+                infrastructure cloud.
+              </p>
+
+              <div class="mt-6 flex flex-wrap justify-center gap-2">
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  Docker
+                </span>
+
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  CI/CD
+                </span>
+
+                <span
+                  class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                >
+                  AWS
+                </span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projets -->
+      <section id="projets" class="scroll-mt-28 py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div
+            class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
+            data-reveal
+          >
+            <div class="max-w-2xl">
+              <p
+                class="text-sm font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400"
+              >
+                Projets
+              </p>
+
+              <h2
+                class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+              >
+                Quelques réalisations récentes
+              </h2>
+
+              <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+                Une sélection de projets qui illustrent notre capacité à livrer
+                des produits complets, modernes et fiables.
+              </p>
+            </div>
+
+            <div
+              class="flex flex-wrap gap-3"
+              role="group"
+              aria-label="Filtrer les projets"
+            >
+              <button
+                type="button"
+                class="filter-button rounded-full border px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                data-filter="all"
+                aria-pressed="true"
+              >
+                Tous
+              </button>
+
+              <button
+                type="button"
+                class="filter-button rounded-full border px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                data-filter="webapp"
+                aria-pressed="false"
+              >
+                Web apps
+              </button>
+
+              <button
+                type="button"
+                class="filter-button rounded-full border px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                data-filter="ecommerce"
+                aria-pressed="false"
+              >
+                E-commerce
+              </button>
+
+              <button
+                type="button"
+                class="filter-button rounded-full border px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                data-filter="mobile"
+                aria-pressed="false"
+              >
+                Mobile
+              </button>
+
+              <button
+                type="button"
+                class="filter-button rounded-full border px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                data-filter="design"
+                aria-pressed="false"
+              >
+                Design
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            <article
+              class="project-card group rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-category="webapp"
+              data-reveal
+            >
+              <div
+                class="relative h-56 overflow-hidden rounded-t-3xl bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500"
+              >
+                <div class="absolute inset-0 bg-grid opacity-25"></div>
+
+                <span
+                  class="absolute left-5 top-5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white backdrop-blur"
+                >
+                  SaaS
+                </span>
+
+                <div
+                  class="absolute inset-x-5 bottom-5 flex items-end justify-between"
+                >
+                  <h3 class="text-2xl font-bold text-white">
+                    Pulse Analytics
+                  </h3>
+
+                  <span
+                    class="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-900 transition duration-300 group-hover:scale-110"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17.25 8.25 21 12l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="space-y-5 p-7">
+                <p class="leading-7 text-slate-600 dark:text-slate-300">
+                  Dashboard SaaS de suivi d’activité en temps réel avec
+                  visualisation de données, gestion des rôles et exports
+                  automatisés.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Next.js
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    TypeScript
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    PostgreSQL
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400"
+                  >
+                    Voir le projet
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-slate-500 transition hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                  >
+                    Code GitHub
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card group rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-category="ecommerce"
+              data-reveal
+              data-reveal-delay="100"
+            >
+              <div
+                class="relative h-56 overflow-hidden rounded-t-3xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500"
+              >
+                <div class="absolute inset-0 bg-grid opacity-25"></div>
+
+                <span
+                  class="absolute left-5 top-5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white backdrop-blur"
+                >
+                  E-commerce
+                </span>
+
+                <div
+                  class="absolute inset-x-5 bottom-5 flex items-end justify-between"
+                >
+                  <h3 class="text-2xl font-bold text-white">Nova Shop</h3>
+
+                  <span
+                    class="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-900 transition duration-300 group-hover:scale-110"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17.25 8.25 21 12l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="space-y-5 p-7">
+                <p class="leading-7 text-slate-600 dark:text-slate-300">
+                  Boutique en ligne headless avec paiement sécurisé, gestion de
+                  stock, SEO optimisé et back-office sur mesure.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Nuxt
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Stripe
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Sanity
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400"
+                  >
+                    Voir le projet
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-slate-500 transition hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                  >
+                    Étude de cas
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card group rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-category="mobile"
+              data-reveal
+              data-reveal-delay="200"
+            >
+              <div
+                class="relative h-56 overflow-hidden rounded-t-3xl bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500"
+              >
+                <div class="absolute inset-0 bg-grid opacity-25"></div>
+
+                <span
+                  class="absolute left-5 top-5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white backdrop-blur"
+                >
+                  Mobile
+                </span>
+
+                <div
+                  class="absolute inset-x-5 bottom-5 flex items-end justify-between"
+                >
+                  <h3 class="text-2xl font-bold text-white">Flow Bank</h3>
+
+                  <span
+                    class="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-900 transition duration-300 group-hover:scale-110"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17.25 8.25 21 12l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="space-y-5 p-7">
+                <p class="leading-7 text-slate-600 dark:text-slate-300">
+                  Application mobile bancaire avec authentification biométrique,
+                  notifications intelligentes et suivi budgétaire.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    React Native
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Firebase
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Node.js
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400"
+                  >
+                    Voir le projet
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-slate-500 transition hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                  >
+                    Prototype Figma
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card group rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-category="design"
+              data-reveal
+            >
+              <div
+                class="relative h-56 overflow-hidden rounded-t-3xl bg-gradient-to-br from-slate-700 via-slate-900 to-indigo-900"
+              >
+                <div class="absolute inset-0 bg-grid opacity-25"></div>
+
+                <span
+                  class="absolute left-5 top-5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white backdrop-blur"
+                >
+                  Design system
+                </span>
+
+                <div
+                  class="absolute inset-x-5 bottom-5 flex items-end justify-between"
+                >
+                  <h3 class="text-2xl font-bold text-white">Orbit UI</h3>
+
+                  <span
+                    class="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-900 transition duration-300 group-hover:scale-110"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17.25 8.25 21 12l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="space-y-5 p-7">
+                <p class="leading-7 text-slate-600 dark:text-slate-300">
+                  Bibliothèque de composants réutilisables, tokens de design,
+                  documentation interactive et accessibilité intégrée.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Figma
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Storybook
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Tailwind
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400"
+                  >
+                    Voir le projet
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-slate-500 transition hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                  >
+                    Documentation
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card group rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-category="webapp"
+              data-reveal
+              data-reveal-delay="100"
+            >
+              <div
+                class="relative h-56 overflow-hidden rounded-t-3xl bg-gradient-to-br from-blue-500 via-indigo-500 to-violet-500"
+              >
+                <div class="absolute inset-0 bg-grid opacity-25"></div>
+
+                <span
+                  class="absolute left-5 top-5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white backdrop-blur"
+                >
+                  Plateforme
+                </span>
+
+                <div
+                  class="absolute inset-x-5 bottom-5 flex items-end justify-between"
+                >
+                  <h3 class="text-2xl font-bold text-white">EduSpace</h3>
+
+                  <span
+                    class="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-900 transition duration-300 group-hover:scale-110"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17.25 8.25 21 12l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="space-y-5 p-7">
+                <p class="leading-7 text-slate-600 dark:text-slate-300">
+                  Plateforme e-learning avec visioconférence, gestion de cours,
+                  quiz interactifs et suivi de progression.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    React
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    NestJS
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    WebRTC
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400"
+                  >
+                    Voir le projet
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-slate-500 transition hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                  >
+                    Code GitHub
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card group rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              data-category="ecommerce"
+              data-reveal
+              data-reveal-delay="200"
+            >
+              <div
+                class="relative h-56 overflow-hidden rounded-t-3xl bg-gradient-to-br from-rose-500 via-pink-500 to-purple-500"
+              >
+                <div class="absolute inset-0 bg-grid opacity-25"></div>
+
+                <span
+                  class="absolute left-5 top-5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white backdrop-blur"
+                >
+                  Marketplace
+                </span>
+
+                <div
+                  class="absolute inset-x-5 bottom-5 flex items-end justify-between"
+                >
+                  <h3 class="text-2xl font-bold text-white">Kraft Market</h3>
+
+                  <span
+                    class="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-900 transition duration-300 group-hover:scale-110"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17.25 8.25 21 12l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="space-y-5 p-7">
+                <p class="leading-7 text-slate-600 dark:text-slate-300">
+                  Marketplace multi-vendeurs avec messagerie intégrée, paiement
+                  fractionné et tableau de bord vendeur.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Next.js
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Prisma
+                  </span>
+
+                  <span
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    Stripe Connect
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400"
+                  >
+                    Voir le projet
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-sm font-semibold text-slate-500 transition hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                  >
+                    Étude de cas
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Témoignages -->
+      <section
+        id="temoignages"
+        class="scroll-mt-28 bg-slate-50 py-24 dark:bg-slate-900/40"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl" data-reveal>
+            <p
+              class="text-sm font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400"
+            >
+              Témoignages
+            </p>
+
+            <h2
+              class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+            >
+              Ce que disent nos clients
+            </h2>
+
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+              Une relation de confiance, une communication claire et des livrables
+              de qualité.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-6 lg:grid-cols-3">
+            <figure
+              class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-950"
+              data-reveal
+            >
+              <div class="flex items-center gap-1 text-amber-400" aria-label="5 étoiles sur 5">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+              </div>
+
+              <blockquote class="mt-6 leading-7 text-slate-600 dark:text-slate-300">
+                “Une équipe très professionnelle, réactive et force de proposition.
+                Le produit livré a dépassé nos attentes, tant sur la qualité
+                technique que sur l’expérience utilisateur.”
+              </blockquote>
+
+              <figcaption class="mt-8 flex items-center gap-4">
+                <div
+                  class="grid h-12 w-12 place-items-center rounded-full bg-indigo-100 text-sm font-bold text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300"
+                >
+                  CL
+                </div>
+
+                <div>
+                  <p class="font-semibold text-slate-900 dark:text-white">
+                    Claire Lambert
+                  </p>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">
+                    CEO, Nova Studio
+                  </p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure
+              class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-950"
+              data-reveal
+              data-reveal-delay="100"
+            >
+              <div class="flex items-center gap-1 text-amber-400" aria-label="5 étoiles sur 5">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+              </div>
+
+              <blockquote class="mt-6 leading-7 text-slate-600 dark:text-slate-300">
+                “Excellente communication, respect des délais et vraie maîtrise
+                technique. Nous avons pu avancer vite sans sacrifier la qualité.”
+              </blockquote>
+
+              <figcaption class="mt-8 flex items-center gap-4">
+                <div
+                  class="grid h-12 w-12 place-items-center rounded-full bg-emerald-100 text-sm font-bold text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300"
+                >
+                  YD
+                </div>
+
+                <div>
+                  <p class="font-semibold text-slate-900 dark:text-white">
+                    Yanis Delacroix
+                  </p>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">
+                    CTO, Finlyse
+                  </p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure
+              class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-950"
+              data-reveal
+              data-reveal-delay="200"
+            >
+              <div class="flex items-center gap-1 text-amber-400" aria-label="5 étoiles sur 5">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+                </svg>
+              </div>
+
+              <blockquote class="mt-6 leading-7 text-slate-600 dark:text-slate-300">
+                “Leur accompagnement a été déterminant dans la refonte de notre
+                  plateforme. L’ergonomie et la performance sont nettement
+                  meilleures.”
+              </blockquote>
+
+              <figcaption class="mt-8 flex items-center gap-4">
+                <div
+                  class="grid h-12 w-12 place-items-center rounded-full bg-fuchsia-100 text-sm font-bold text-fuchsia-700 dark:bg-fuchsia-500/15 dark:text-fuchsia-300"
+                >
+                  RM
+                </div>
+
+                <div>
+                  <p class="font-semibold text-slate-900 dark:text-white">
+                    Roxane Morel
+                  </p>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">
+                    Product Manager, EduSpace
+                  </p>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technologies -->
+      <section id="technologies" class="scroll-mt-28 py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl" data-reveal>
+            <p
+              class="text-sm font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400"
+            >
+              Technologies
+            </p>
+
+            <h2
+              class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+            >
+              Notre stack de prédilection
+            </h2>
+
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+              Nous choisissons toujours les technologies les plus adaptées au
+              contexte projet, à la maintenabilité et aux objectifs métier.
+            </p>
+          </div>
+
+          <div class="mt-12 flex flex-wrap gap-3" data-reveal>
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              HTML
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              CSS
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              JavaScript
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              TypeScript
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              React
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              Next.js
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              Vue
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              Nuxt
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              Tailwind CSS
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              Node.js
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              NestJS
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              PostgreSQL
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              MongoDB
+            </span>
+
+            <span
+              class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+            >
+              Docker
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section
+        id="contact"
+        class="scroll-mt-28 bg-slate-50 py-24 dark:bg-slate-900/40"
+      >
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-12 lg:grid-cols-2">
+            <div data-reveal>
+              <p
+                class="text-sm font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400"
+              >
+                Contact
+              </p>
+
+              <h2
+                class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+              >
+                Discutons de votre projet
+              </h2>
+
+              <p class="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-300">
+                Vous avez un besoin de site web, d’application, de refonte ou
+                de renfort technique ? Décrivez-nous votre projet et nous vous
+                répondons rapidement.
+              </p>
+
+              <div class="mt-10 space-y-6">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-400"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                      />
+                    </svg>
+                  </div>
+
+                  <div>
+                    <h3 class="font-semibold text-slate-900 dark:text-white">
+                      Email
+                    </h3>
+                    <p class="mt-1 text-slate-600 dark:text-slate-300">
+                      contact@devcollective.fr
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div
+                    class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-100 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                      />
+                    </svg>
+                  </div>
+
+                  <div>
+                    <h3 class="font-semibold text-slate-900 dark:text-white">
+                      Téléphone
+                    </h3>
+                    <p class="mt-1 text-slate-600 dark:text-slate-300">
+                      +33 6 12 34 56 78
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div
+                    class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-fuchsia-100 text-fuchsia-600 dark:bg-fuchsia-500/15 dark:text-fuchsia-400"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                      />
+                    </svg>
+                  </div>
+
+                  <div>
+                    <h3 class="font-semibold text-slate-900 dark:text-white">
+                      Localisation
+                    </h3>
+                    <p class="mt-1 text-slate-600 dark:text-slate-300">
+                      Paris, France — remote possible
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div data-reveal data-reveal-delay="150">
+              <form
+                id="contact-form"
+                class="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl dark:border-slate-800 dark:bg-slate-950"
+                novalidate
+              >
+                <div class="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label
+                      for="name"
+                      class="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200"
+                    >
+                      Nom complet
+                    </label>
+
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      autocomplete="name"
+                      placeholder="Jean Dupont"
+                      required
+                      class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="email"
+                      class="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200"
+                    >
+                      Email
+                    </label>
+
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      placeholder="jean@entreprise.fr"
+                      required
+                      class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20"
+                    />
+                  </div>
+                </div>
+
+                <div class="mt-6">
+                  <label
+                    for="subject"
+                    class="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200"
+                  >
+                    Sujet
+                  </label>
+
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    placeholder="Refonte de site, application web, API..."
+                    required
+                    class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20"
+                  />
+                </div>
+
+                <div class="mt-6">
+                  <label
+                    for="message"
+                    class="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200"
+                  >
+                    Message
+                  </label>
+
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    placeholder="Décrivez votre projet, vos objectifs, vos délais..."
+                    required
+                    class="w-full resize-y rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20"
+                  ></textarea>
+                </div>
+
+                <button
+                  id="submit-button"
+                  type="submit"
+                  class="mt-8 w-full rounded-xl bg-indigo-600 px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:bg-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  Envoyer le message
+                </button>
+
+                <p
+                  id="form-status"
+                  class="mt-4 hidden text-sm font-medium text-emerald-600 dark:text-emerald-400"
+                  role="status"
+                ></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 py-12 dark:border-slate-800">
+      <div
+        class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-4 sm:px-6 lg:flex-row lg:px-8"
+      >
+        <div class="text-center lg:text-left">
+          <p class="text-lg font-extrabold text-slate-900 dark:text-white">
+            DevCollective
+          </p>
+
+          <p class="mt-2 max-w-md text-sm leading-6 text-slate-500 dark:text-slate-400">
+            Équipe de développeurs passionnés par la création de produits web
+            modernes, performants et accessibles.
+          </p>
+        </div>
+
+        <nav class="flex flex-wrap justify-center gap-6" aria-label="Liens footer">
+          <a
+            href="#services"
+            class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+          >
+            Services
+          </a>
+
+          <a
+            href="#equipe"
+            class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+          >
+            Équipe
+          </a>
+
+          <a
+            href="#projets"
+            class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+          >
+            Projets
+          </a>
+
+          <a
+            href="#contact"
+            class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+          >
+            Contact
+          </a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <a
+            href="#"
+            aria-label="GitHub"
+            class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition hover:text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="#"
+            aria-label="LinkedIn"
+            class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition hover:text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.554V9h3.565v11.452z"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="#"
+            aria-label="Twitter / X"
+            class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition hover:text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="mx-auto mt-10 max-w-7xl border-t border-slate-200 px-4 pt-8 text-center text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400 sm:px-6 lg:px-8"
+      >
+        <p>
+          © <span id="year"></span> DevCollective. Tous droits réservés.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const $ = (selector, context = document) => context.querySelector(selector);
+      const $$ = (selector, context = document) =>
+        Array.from(context.querySelectorAll(selector));
+
+      // Theme toggle
+      const themeToggle = $("#theme-toggle");
+      const sunIcon = $("#sun-icon");
+      const moonIcon = $("#moon-icon");
+
+      function updateThemeUI() {
+        const isDark = document.documentElement.classList.contains("dark");
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        sunIcon.classList.toggle("hidden", !isDark);
+        moonIcon.classList.toggle("hidden", isDark);
+      }
+
+      themeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+
+        localStorage.setItem(
+          "theme",
+          document.documentElement.classList.contains("dark") ? "dark" : "light"
+        );
+
+        updateThemeUI();
+      });
+
+      updateThemeUI();
+
+      // Mobile menu
+      const mobileMenuButton = $("#mobile-menu-button");
+      const mobileMenu = $("#mobile-menu");
+      const menuOpenIcon = $("#menu-open-icon");
+      const menuCloseIcon = $("#menu-close-icon");
+      const mobileMenuLinks = $$("#mobile-menu a");
+
+      function toggleMobileMenu(force) {
+        const expanded =
+          force ?? mobileMenuButton.getAttribute("aria-expanded") !== "true";
+
+        mobileMenuButton.setAttribute("aria-expanded", String(expanded));
+        mobileMenu.classList.toggle("hidden", !expanded);
+        menuOpenIcon.classList.toggle("hidden", expanded);
+        menuCloseIcon.classList.toggle("hidden", !expanded);
+        document.body.classList.toggle("overflow-hidden", expanded);
+      }
+
+      mobileMenuButton.addEventListener("click", () => {
+        toggleMobileMenu();
+      });
+
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          toggleMobileMenu(false);
+        });
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+          toggleMobileMenu(false);
+          mobileMenuButton.focus();
+        }
+      });
+
+      // Header scroll state
+      const siteHeader = $("#site-header");
+      const headerScrollClasses = [
+        "bg-white/80",
+        "dark:bg-slate-950/80",
+        "shadow-sm",
+        "border-slate-200/70",
+        "dark:border-slate-800/70",
+        "glass",
+      ];
+
+      function updateHeaderState() {
+        if (window.scrollY > 20) {
+          siteHeader.classList.add(...headerScrollClasses);
+        } else {
+          siteHeader.classList.remove(...headerScrollClasses);
+        }
+      }
+
+      window.addEventListener("scroll", updateHeaderState, { passive: true });
+      updateHeaderState();
+
+      // Reveal on scroll
+      const revealElements = $$("[data-reveal]");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.16,
+        }
+      );
+
+      revealElements.forEach((element) => {
+        if (element.dataset.revealDelay) {
+          element.style.transitionDelay = `${element.dataset.revealDelay}ms`;
+        }
+
+        revealObserver.observe(element);
+      });
+
+      // Active navigation link
+      const sections = $$("main section[id]");
+      const navLinks = $$(".nav-link");
+
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            navLinks.forEach((link) => {
+              const isActive = link.getAttribute("href") === `#${entry.target.id}`;
+
+              link.classList.toggle("text-indigo-600", isActive);
+              link.classList.toggle("dark:text-indigo-400", isActive);
+            });
+          });
+        },
+        {
+          rootMargin: "-45% 0px -55% 0px",
+        }
+      );
+
+      sections.forEach((section) => sectionObserver.observe(section));
+
+      // Project filters
+      const filterButtons = $$(".filter-button");
+      const projectCards = $$(".project-card");
+
+      const activeFilterClasses = [
+        "bg-slate-900",
+        "text-white",
+        "border-slate-900",
+        "dark:bg-white",
+        "dark:text-slate-900",
+        "dark:border-white",
+      ];
+
+      const inactiveFilterClasses = [
+        "bg-white",
+        "text-slate-700",
+        "border-slate-200",
+        "hover:bg-slate-50",
+        "dark:bg-slate-900",
+        "dark:text-slate-300",
+        "dark:border-slate-700",
+        "dark:hover:bg-slate-800",
+      ];
+
+      function setFilterButtonState(button, isActive) {
+        button.classList.remove(...activeFilterClasses, ...inactiveFilterClasses);
+        button.classList.add(...(isActive ? activeFilterClasses : inactiveFilterClasses));
+        button.setAttribute("aria-pressed", String(isActive));
+      }
+
+      filterButtons.forEach((button) => {
+        setFilterButtonState(button, button.dataset.filter === "all");
+
+        button.addEventListener("click", () => {
+          const selectedFilter = button.dataset.filter;
+
+          filterButtons.forEach((filterButton) => {
+            setFilterButtonState(filterButton, filterButton === button);
+          });
+
+          projectCards.forEach((card) => {
+            const shouldShow =
+              selectedFilter === "all" || card.dataset.category === selectedFilter;
+
+            card.classList.toggle("hidden", !shouldShow);
+          });
+        });
+      });
+
+      // Contact form
+      const contactForm = $("#contact-form");
+      const formStatus = $("#form-status");
+      const submitButton = $("#submit-button");
+
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!contactForm.checkValidity()) {
+          contactForm.reportValidity();
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Envoi en cours...";
+
+        // Ici, tu pourras connecter un vrai service d'envoi d'email :
+        // Formspree, EmailJS, Resend, API backend, etc.
+        setTimeout(() => {
+          submitButton.disabled = false;
+          submitButton.textContent = "Envoyer le message";
+
+          formStatus.textContent =
+            "Merci ! Votre message a bien été envoyé. Nous revenons vers vous rapidement.";
+          formStatus.classList.remove("hidden");
+
+          contactForm.reset();
+        }, 900);
+      });
+
+      // Footer year
+      $("#year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
