@@ -1,4 +1,4 @@
-       const $ = (selector, context = document) => context.querySelector(selector);
+const $ = (selector, context = document) => context.querySelector(selector);
       const $$ = (selector, context = document) => Array.from(context.querySelectorAll(selector));
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -14,10 +14,12 @@
         introStage.classList.add('play');
       }
 
-      function enterSite() {
+      function enterSite(instant) {
+        if (instant) introScreen.style.transition = 'none';
         introScreen.classList.add('hidden-intro');
         bodyTag.classList.remove('overflow-hidden'); // Réactive le scroll
-        
+        sessionStorage.setItem('evodevs_intro_seen', '1');
+
         // Initialise les animations du site principal SEULEMENT maintenant
         if (!siteInitialized) {
           initSiteAnimations();
@@ -27,14 +29,21 @@
         // Supprime l'intro du DOM après la transition pour libérer la mémoire
         setTimeout(() => {
           introScreen.remove();
-        }, 800);
+        }, instant ? 0 : 800);
       }
 
-      document.getElementById('discover-btn').addEventListener('click', enterSite);
-      document.getElementById('skip-btn').addEventListener('click', enterSite);
+      document.getElementById('discover-btn').addEventListener('click', () => enterSite(false));
+      document.getElementById('skip-btn').addEventListener('click', () => enterSite(false));
 
-      // Lance l'intro au chargement
-      window.addEventListener('load', startIntro);
+      // Lance l'intro complète (~9s) uniquement à la première visite de la
+      // session. Les visites suivantes (navigation, retour sur le site)
+      // passent directement au site : rendu perçu bien plus rapide, sans
+      // perdre l'effet "wahou" pour un nouveau visiteur.
+      if (sessionStorage.getItem('evodevs_intro_seen')) {
+        window.addEventListener('load', () => enterSite(true));
+      } else {
+        window.addEventListener('load', startIntro);
+      }
 
 
       /* =========================================
@@ -240,10 +249,20 @@
         goToTestimonial(0); startTestimonialAutoplay();
 
         /* Technologies */
-        const technologies = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Vue", "Nuxt", "Tailwind CSS", "Node.js", "NestJS", "PostgreSQL", "MongoDB", "Docker"];
-        $("#marquee-track").innerHTML = [...technologies, ...technologies].map((tech) => `<span class="flex items-center gap-3 text-lg font-semibold text-slate-500 dark:text-slate-400"><span class="h-2 w-2 rounded-full bg-brand-500 dark:bg-brand-400"></span>${tech}</span>`).join("");
-        $("#tech-grid").innerHTML = technologies.map((tech) => `<span class="cursor-default rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition duration-300 hover:-translate-y-1 hover:border-brand-600/50 hover:text-brand-700 hover:shadow-lg hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:text-slate-300 dark:hover:border-brand-400/50 dark:hover:text-brand-300">${tech}</span>`).join("");
+        const technologies = [
+    // Frontend & Web
+    "HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Vue", "Nuxt", "Tailwind CSS", 
+    // Backend & Base de données
+    "Node.js", "NestJS", "PostgreSQL", "MongoDB", "Docker", 
+    // PHP & Frameworks (NOUVEAU)
+    "PHP", "Laravel", "Symfony", "CodeIgniter", 
+    // Mobile & APK (NOUVEAU)
+    "React Native", "Flutter", "Kotlin", "Swift"
+];
 
+$("#marquee-track").innerHTML = [...technologies, ...technologies].map((tech) => `<span class="flex items-center gap-3 text-lg font-semibold text-slate-500 dark:text-slate-400"><span class="h-2 w-2 rounded-full bg-brand-500 dark:bg-brand-400"></span>${tech}</span>`).join("");
+
+$("#tech-grid").innerHTML = technologies.map((tech) => `<span class="cursor-default rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition duration-300 hover:-translate-y-1 hover:border-brand-600/50 hover:text-brand-700 hover:shadow-lg hover:shadow-brand-600/15 dark:border-white/10 dark:bg-night-800 dark:text-slate-300 dark:hover:border-brand-400/50 dark:hover:text-brand-300">${tech}</span>`).join("");
         /* Formulaire */
         const contactForm = $("#contact-form"); const formStatus = $("#form-status"); const submitButton = $("#submit-button");
         contactForm.addEventListener("submit", (event) => {
@@ -295,4 +314,116 @@ requestAnimationFrame(() => {
   document.body.classList.add("site-ready");
 });
       }
- 
+  /* Curseur cible personnalisé (desktop uniquement) */
+const supportsFinePointer = window.matchMedia("(pointer: fine)").matches;
+const cursorReticle = $("#cursor-reticle");
+
+if (supportsFinePointer && cursorReticle && !prefersReducedMotion) {
+  let targetX = window.innerWidth / 2, targetY = window.innerHeight / 2;
+  let renderX = targetX, renderY = targetY;
+  let hasPosition = false;
+  let rafId = null;
+
+  // Bascule le curseur visible/actif. Appelée à chaque mousemove ET à chaque
+  // ré-entrée dans la fenêtre : c'est ce qui manquait avant (le curseur ne
+  // réapparaissait jamais après un alt-tab, un survol d'onglet, un blur...).
+  function showCursor() {
+    document.body.classList.add("custom-cursor-active");
+    cursorReticle.classList.add("is-active");
+  }
+  function hideCursor() {
+    cursorReticle.classList.remove("is-active", "is-hovering", "is-clicking");
+  }
+
+  window.addEventListener("mousemove", (event) => {
+    targetX = event.clientX;
+    targetY = event.clientY;
+    if (!hasPosition) {
+      // Évite le "vol" depuis le centre de l'écran au tout premier mouvement
+      renderX = targetX;
+      renderY = targetY;
+      hasPosition = true;
+    }
+    showCursor();
+  }, { passive: true });
+
+  // Le curseur redevient invisible seulement quand la souris quitte VRAIMENT
+  // la fenêtre du navigateur, et redevient visible dès qu'elle revient
+  // (mouseenter + mousemove), plutôt que de rester bloqué invisible.
+  document.addEventListener("mouseleave", hideCursor);
+  document.addEventListener("mouseenter", showCursor);
+  window.addEventListener("blur", hideCursor);
+  window.addEventListener("focus", () => { if (hasPosition) showCursor(); });
+
+  function renderCursor() {
+    // Lissage plus réactif (0.35 au lieu de 0.22) + translate3d pour un
+    // rendu GPU stable, sans à-coups ni décalage perceptible.
+    renderX += (targetX - renderX) * 0.35;
+    renderY += (targetY - renderY) * 0.35;
+    cursorReticle.style.transform = `translate3d(${renderX}px, ${renderY}px, 0)`;
+    rafId = requestAnimationFrame(renderCursor);
+  }
+  rafId = requestAnimationFrame(renderCursor);
+
+  const cursorHoverSelector = "a, button, input, textarea, select, [role='button'], .team-card, .project-card";
+  document.addEventListener("mouseover", (event) => { if (event.target.closest(cursorHoverSelector)) cursorReticle.classList.add("is-hovering"); });
+  document.addEventListener("mouseout", (event) => { if (event.target.closest(cursorHoverSelector)) cursorReticle.classList.remove("is-hovering"); });
+  window.addEventListener("mousedown", () => cursorReticle.classList.add("is-clicking"));
+  window.addEventListener("mouseup", () => cursorReticle.classList.remove("is-clicking"));
+
+  // Coupe la boucle si l'onglet devient invisible, pour ne pas gaspiller de ressources.
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) hideCursor();
+  });
+}
+
+/* =========================================
+   WIDGET WHATSAPP — panneau de chat dépliable
+   ========================================= */
+(function () {
+  // Remplace ce numéro par le vrai numéro WhatsApp de l'équipe (format international, sans "+" ni espaces).
+  const WHATSAPP_NUMBER = "237600000000";
+
+  const fab = document.getElementById("whatsapp-fab");
+  const panel = document.getElementById("whatsapp-panel");
+  const closeBtn = document.getElementById("whatsapp-panel-close");
+  if (!fab || !panel) return;
+
+  function openWhatsAppChat(message) {
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  function openPanel() {
+    panel.classList.add("is-open");
+    fab.classList.add("panel-open");
+    fab.setAttribute("aria-expanded", "true");
+  }
+  function closePanel() {
+    panel.classList.remove("is-open");
+    fab.classList.remove("panel-open");
+    fab.setAttribute("aria-expanded", "false");
+  }
+  function togglePanel() {
+    panel.classList.contains("is-open") ? closePanel() : openPanel();
+  }
+
+  fab.addEventListener("click", togglePanel);
+  closeBtn.addEventListener("click", closePanel);
+
+  document.querySelectorAll(".wa-quick-reply").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      openWhatsAppChat(btn.dataset.waMessage || "Bonjour EvoDevs !");
+      closePanel();
+    });
+  });
+
+  // Ferme le panneau si on clique en dehors, ou avec la touche Échap.
+  document.addEventListener("click", (event) => {
+    if (!panel.classList.contains("is-open")) return;
+    if (!panel.contains(event.target) && !fab.contains(event.target)) closePanel();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closePanel();
+  });
+})();
